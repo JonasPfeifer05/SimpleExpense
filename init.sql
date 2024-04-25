@@ -17,6 +17,7 @@ CREATE TABLE SubTopic
 
 CREATE TABLE Entry (
     id SERIAL NOT NULL PRIMARY KEY,
-    topic_id INT REFERENCES Topic(id),
-    icon_id INT REFERENCES SubTopic(id)
+    topic_id INT NOT NULL REFERENCES Topic(id),
+    subtopic_id INT NOT NULL REFERENCES SubTopic(id),
+    amount DECIMAL NOT NULL
 )

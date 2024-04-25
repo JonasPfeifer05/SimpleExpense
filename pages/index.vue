@@ -2,7 +2,7 @@
 import {useEntryStore} from "~/stores/entryStore";
 import {useTopicStore} from "~/stores/topicStore";
 import {useAddBottomSheetStore} from "~/stores/addBottomSheetStore";
-import type {SubTopic} from "~/types/entryData";
+import type {SubTopic, Topic} from "~/types/entryData";
 
 const colorMode = useColorMode();
 console.log(colorMode.value);
@@ -11,9 +11,9 @@ const entryStore = useEntryStore();
 const topicStore = useTopicStore();
 const addBottomSheetStore = useAddBottomSheetStore();
 
-let topic: string;
+let topic: Topic;
 let subTopic: SubTopic;
-let amount: number|null;
+let amount: number | null;
 let error = ref("");
 
 onMounted(() => {
@@ -67,7 +67,7 @@ function clearModal() {
             <div id="sheet" @click.stop>
                 <select id="topic-selector" v-model="topic">
                     <option value="topic" disabled>Topic</option>
-                    <option :value="topic" v-for="topic in topicStore.topics">{{ topic }}</option>
+                    <option :value="topic" v-for="topic in topicStore.topics">{{ topic.name }}</option>
                 </select>
                 <select id="subtopic-selector" v-model="subTopic">
                     <option value="subtopic" disabled>Subtopic</option>
@@ -86,7 +86,7 @@ function clearModal() {
         <div id="app-bar">Summary</div>
         <div id="content">
             <div id="balance">
-                {{formatAmount(entryStore.balance)}}€
+                {{ formatAmount(entryStore.balance) }}€
             </div>
             <div id="entries">
                 <div class="entry" v-for="entry in entryStore.entries">

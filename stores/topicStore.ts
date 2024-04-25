@@ -1,7 +1,7 @@
-import type {SubTopic} from "~/types/entryData";
+import type {SubTopic, Topic} from "~/types/entryData";
 
 export interface TopicStoreState {
-    topics: string[],
+    topics: Topic[],
     subTopics: SubTopic[]
 }
 
@@ -12,15 +12,17 @@ export const useTopicStore = defineStore("topic", {
     }),
     actions: {
         fetchTopics() {
-            this.topics = ["general", "school", "naomi"];
+            this.topics = [{id: 1, name: "general"}, {id: 2, name: "school"}, {id: 3, name: "naomi"}];
         },
         fetchSubTopics() {
             this.subTopics = [
                 {
+                    id: 1,
                     name: "food",
                     icon: "🍖",
                 },
                 {
+                    id: 2,
                     name: "gas",
                     icon: "⛽",
                 }
