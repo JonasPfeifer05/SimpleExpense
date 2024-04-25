@@ -6,8 +6,8 @@ export default defineNuxtConfig({
             Roboto: true,
         }
     },
-    devtools: {enabled: true},
+    devtools: {enabled: false},
     css: ["~/assets/css/main.scss", "~/assets/css/light-mode.scss", "~/assets/css/dark-mode.scss"],
-    modules: ['@nuxtjs/color-mode', '@nuxtjs/google-fonts'],
+    modules: ['@nuxtjs/color-mode', '@nuxtjs/google-fonts', 'nuxt-icon'],
 
 })
