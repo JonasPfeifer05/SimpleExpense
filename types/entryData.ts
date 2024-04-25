@@ -5,6 +5,6 @@ export interface SubTopic {
 
 export interface EntryData {
     topic: string;
-    sub_topic: SubTopic;
+    subTopic: SubTopic;
     amount: number;
 }

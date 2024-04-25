@@ -8,6 +8,6 @@ export default defineNuxtConfig({
     },
     devtools: {enabled: false},
     css: ["~/assets/css/main.scss", "~/assets/css/light-mode.scss", "~/assets/css/dark-mode.scss"],
-    modules: ['@nuxtjs/color-mode', '@nuxtjs/google-fonts', 'nuxt-icon'],
+    modules: ['@nuxtjs/color-mode', '@nuxtjs/google-fonts', 'nuxt-icon','@pinia/nuxt'],
 
 })
