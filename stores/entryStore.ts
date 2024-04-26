@@ -21,7 +21,15 @@ export const useEntryStore = defineStore("entry", {
         async fetchEntries() {
             this.entries = await $fetch<EntryData[]>("/api/entry", {method: "GET"});
         },
-        addEntry(entry: EntryData) {
+        async addEntry(entry: EntryData) {
+            await $fetch("/api/entry", {
+                method: "POST",
+                body: {
+                    topic_id: entry.topic.id,
+                    subtopic_id: entry.subTopic.id,
+                    amount: entry.amount,
+                }
+            })
             this.entries.push(entry);
         }
     }

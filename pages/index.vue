@@ -89,7 +89,7 @@ function clearModal() {
                 {{ formatAmount(entryStore.balance) }}€
             </div>
             <div id="entries">
-                <div class="entry" v-for="entry in entryStore.entries">
+                <div class="entry" v-for="entry in entryStore.entries.toReversed()">
                     <div class="entry-icon">{{ entry.subTopic.icon }}</div>
                     <div class="entry-topic">
                         <div class="title">{{ entry.subTopic.name }}</div>
