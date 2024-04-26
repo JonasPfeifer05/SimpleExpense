@@ -3,6 +3,7 @@ export default defineEventHandler(async () => {
 
     let result = await db.sql
         `SELECT id, name, icon
-         FROM subtopic`;
+         FROM subtopic
+         ORDER BY name`;
     return result.rows;
 })

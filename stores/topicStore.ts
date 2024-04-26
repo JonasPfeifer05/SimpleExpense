@@ -1,5 +1,7 @@
 import type {SubTopic, Topic} from "~/types/entryData";
 import {$fetch} from "ofetch";
+import {Buffer} from "unenv/runtime/node/buffer/_buffer";
+import compare = Buffer.compare;
 
 export interface TopicStoreState {
     topics: Topic[],

@@ -30,7 +30,7 @@ export const useEntryStore = defineStore("entry", {
                     amount: entry.amount,
                 }
             })
-            this.entries.push(entry);
+            this.entries = [entry, ...this.entries];
         }
     }
 });
