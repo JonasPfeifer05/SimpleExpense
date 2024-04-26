@@ -1,4 +1,5 @@
 import type {SubTopic, Topic} from "~/types/entryData";
+import {$fetch} from "ofetch";
 
 export interface TopicStoreState {
     topics: Topic[],
@@ -11,22 +12,11 @@ export const useTopicStore = defineStore("topic", {
         subTopics: [],
     }),
     actions: {
-        fetchTopics() {
-            this.topics = [{id: 1, name: "general"}, {id: 2, name: "school"}, {id: 3, name: "naomi"}];
+        async fetchTopics() {
+            this.topics = await $fetch<Topic[]>("/api/topic", {method: "GET"});
         },
-        fetchSubTopics() {
-            this.subTopics = [
-                {
-                    id: 1,
-                    name: "food",
-                    icon: "🍖",
-                },
-                {
-                    id: 2,
-                    name: "gas",
-                    icon: "⛽",
-                }
-            ];
+        async fetchSubTopics() {
+            this.subTopics = await $fetch<SubTopic[]>("/api/subtopic", {method: "GET"});
         }
     }
 })

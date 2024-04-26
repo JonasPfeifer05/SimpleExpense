@@ -5,7 +5,6 @@ import {useAddBottomSheetStore} from "~/stores/addBottomSheetStore";
 import type {SubTopic, Topic} from "~/types/entryData";
 
 const colorMode = useColorMode();
-console.log(colorMode.value);
 
 const entryStore = useEntryStore();
 const topicStore = useTopicStore();
@@ -16,10 +15,10 @@ let subTopic: SubTopic;
 let amount: number | null;
 let error = ref("");
 
-onMounted(() => {
-    entryStore.fetchEntries()
-    topicStore.fetchTopics();
-    topicStore.fetchSubTopics();
+onMounted(async () => {
+    await entryStore.fetchEntries()
+    await topicStore.fetchTopics();
+    await topicStore.fetchSubTopics();
 
     clearModal();
 })
@@ -34,6 +33,7 @@ function formatAmount(amount: number): string {
 }
 
 function showAddBottomSheet() {
+    clearModal();
     addBottomSheetStore.show();
 }
 
@@ -85,7 +85,7 @@ function clearModal() {
 
         <div id="app-bar">Summary</div>
         <div id="content">
-            <div id="balance">
+            <div id="balance" :style="{ color: positiveNegative(entryStore.balance , '#50C878', '#E5554E') }">
                 {{ formatAmount(entryStore.balance) }}€
             </div>
             <div id="entries">
@@ -93,7 +93,7 @@ function clearModal() {
                     <div class="entry-icon">{{ entry.subTopic.icon }}</div>
                     <div class="entry-topic">
                         <div class="title">{{ entry.subTopic.name }}</div>
-                        <div class="sub-title">{{ entry.topic }}</div>
+                        <div class="sub-title">{{ entry.topic.name }}</div>
                     </div>
                     <div class="entry-amount" :style="{ color: positiveNegative(entry.amount , '#50C878', '#E5554E') }">
                         {{ positiveNegative(entry.amount, "+", "") }}{{ formatAmount(entry.amount) }}€
