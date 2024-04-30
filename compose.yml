@@ -1,0 +1,7 @@
+version: '3.3'
+services:
+    simple-expense:
+        build: .
+        container_name: simple-expense
+        ports:
+            - "3000:3000"
