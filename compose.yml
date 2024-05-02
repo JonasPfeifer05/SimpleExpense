@@ -12,7 +12,7 @@ services:
             - POSTGRES_USER=admin
             - POSTGRES_DB=simpleexpense
         healthcheck:
-            test: [ "CMD-SHELL", "pg_isready -U admin -d loggaroo" ]
+            test: [ "CMD-SHELL", "pg_isready -U admin -d simpleexpense" ]
             interval: 5s
             timeout: 5s
             retries: 5
