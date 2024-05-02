@@ -14,6 +14,6 @@ app.use(bodyParser.json());
 app.use(authMiddleware)
 app.use("/api", apiRouter);
 
-app.listen(port, () => {
+app.listen(`0.0.0.0:${port}`, () => {
     console.log(`[server]: Server is running at http://localhost:${port}`);
 });
