@@ -6,7 +6,12 @@ export default defineNuxtConfig({
             Roboto: true,
         }
     },
+    routeRules: {
+        '/api/**': {
+            proxy: { to: "http://127.0.0.1:3001/api/**", },
+        }
+    },
     devtools: {enabled: false},
     css: ["~/assets/css/main.scss", "~/assets/css/light-mode.scss", "~/assets/css/dark-mode.scss"],
-    modules: ['@nuxtjs/color-mode', '@nuxtjs/google-fonts', 'nuxt-icon', '@pinia/nuxt']
+    modules: ['@nuxtjs/color-mode', '@nuxtjs/google-fonts', 'nuxt-icon', '@pinia/nuxt',"nuxt-security"],
 })

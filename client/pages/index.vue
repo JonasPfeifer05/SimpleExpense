@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import {$fetch} from "ofetch";
 import {sha256} from "ohash";
 import {navigateTo} from "#app";
 
@@ -20,9 +19,14 @@ async function tryLogin() {
     }
 }
 
-async function isCorrectPassword() {
-    const response = await $fetch<string>("/api/ping");
-    return response == "ping";
+async function isCorrectPassword(): Promise<boolean> {
+    try {
+        const response = await $fetch("/api/ping");
+        return await response == "pong";
+    } catch (ignored) {
+        console.log(ignored);
+        return false;
+    }
 }
 </script>
 
