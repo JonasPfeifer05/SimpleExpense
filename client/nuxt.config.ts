@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     },
     routeRules: {
         '/api/**': {
-            proxy: { to: "http://127.0.0.1:3001/api/**", },
+            proxy: { to: "backend:3001/api/**", },
         }
     },
     devtools: {enabled: false},
